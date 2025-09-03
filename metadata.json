@@ -1,0 +1,5 @@
+{
+  "name": "猴子香蕉",
+  "description": "一款由AI驱动的照片编辑器，使用Google的Gemini模型，根据文本提示修改图片。上传照片，描述你想要的变化，让AI生成新版本。",
+  "requestFramePermissions": []
+}
