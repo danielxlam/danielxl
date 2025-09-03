@@ -16,29 +16,47 @@ const UploadIcon = () => (
     </svg>
 );
 const MonkeyLogo = () => (
-  <svg className="w-64 h-64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-      {/* Banana */}
-      <path
-          d="M128.6,16.1c11.3,7.9,15,22.6,7.1,33.9s-22.6,15-33.9,7.1c-11.3-7.9-15-22.6-7.1-33.9C102.6,11.9,117.3,8.2,128.6,16.1z"
-          fill="#facc15"
-      />
-      {/* Monkey */}
-      <g fill="#E75248">
-          {/* Right arm */}
-          <path d="M110.4,94.9c0,0-2.3-25.1,10-48.4c1-1.9,4.4-6.3,4.4-6.3" stroke="#E75248" strokeWidth="18" strokeLinecap="round" fill="none"/>
-          {/* Body and head */}
-          <path d="M100.1,170c-9.3,0-12.7-1.9-12.7-1.9s-12.3-6.5-12.3-24.2c0-21.9,11.1-29,11.1-29s1.1-15.6-8.7-27 c-8.3-9.7-11-21.2-5.7-32.3c4-8.5,12.9-13.8,22.8-13.8c12.2,0,22.6,7.5,26.5,16.5c4.7,10.8,1.4,23.3-7.4,33.4 c-8,9.2-7.8,21.6-7.8,21.6s12.5,9.2,12.5,29.9c0,16.1-13.2,23.1-13.2,23.1S109.4,170,100.1,170z"/>
-          {/* Ears */}
-          <circle cx="71" cy="67" r="10"/>
-          <circle cx="129" cy="67" r="10"/>
-          {/* Left arm */}
-          <path d="M78.4,120.9c-10.4,9.6-18.7,9-18.7,9s-10.3-4.5-1.9-16.2" stroke="#E75248" strokeWidth="18" strokeLinecap="round" fill="none"/>
-          {/* Legs */}
-          <path d="M85,164c-5.5,10.6-15.8,14.4-15.8,14.4" stroke="#E75248" strokeWidth="18" strokeLinecap="round" fill="none"/>
-          <path d="M115,164c5.5,10.6,15.8,14.4,15.8,14.4" stroke="#E75248" strokeWidth="18" strokeLinecap="round" fill="none"/>
+    <svg className="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bananaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor: '#fef08a'}} />
+          <stop offset="100%" style={{stopColor: '#facc15'}} />
+        </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      <g transform="rotate(-30 100 100)">
+        {/* Banana Body */}
+        <path d="M50,150 C 50,100 100,60 150,70 C 160,120 110,160 70,155 C 60,153 50,150 50,150 Z" fill="url(#bananaGradient)" />
+        
+        {/* Banana Ends */}
+        <path d="M48,152 C 45,145 45,135 50,130 L 55,135 C 50,140 50,148 48,152 Z" fill="#a16207" />
+        
+        {/* Pixelation effect */}
+        <g transform="translate(140, 60)">
+          <rect x="5" y="5" width="8" height="8" fill="#fef08a" className="animate-pulse-fast" style={{animationDelay: '0.1s'}}/>
+          <rect x="15" y="-5" width="12" height="12" fill="#facc15" className="animate-pulse-fast" style={{animationDelay: '0.3s'}}/>
+          <rect x="25" y="10" width="10" height="10" fill="#eab308" className="animate-pulse-fast" style={{animationDelay: '0.2s'}}/>
+          <rect x="10" y="25" width="6" height="6" fill="#fef9c3" className="animate-pulse-fast" style={{animationDelay: '0.4s'}}/>
+          <rect x="30" y="-10" width="7" height="7" fill="#facc15" className="animate-pulse-fast" style={{animationDelay: '0.1s'}}/>
+          <rect x="40" y="5" width="9" height="9" fill="#fef08a" className="animate-pulse-fast" style={{animationDelay: '0.5s'}}/>
+        </g>
+    
+        {/* Sparkles */}
+        <g fill="#fef9c3" filter="url(#glow)">
+            <path d="M130 50 L 132 45 L 134 50 L 139 52 L 134 54 L 132 59 L 130 54 L 125 52 Z" />
+            <path d="M80 80 L 81 77 L 82 80 L 85 81 L 82 82 L 81 85 L 80 82 L 77 81 Z" opacity="0.7" />
+        </g>
       </g>
-  </svg>
+    </svg>
 );
+
 
 interface GenerationUIProps {
   onGenerate: (prompt: string) => void;
